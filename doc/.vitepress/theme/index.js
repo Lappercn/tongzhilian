@@ -2,11 +2,13 @@ import DefaultTheme from 'vitepress/theme'
 import './style.css'
 
 import TeamGallery from './components/TeamGallery.vue'
+import TeamMembers from './components/TeamMembers.vue'
 
 export default {
     extends: DefaultTheme,
     enhanceApp({ app }) {
         app.component('TeamGallery', TeamGallery)
+        app.component('TeamMembers', TeamMembers)
         if (typeof window !== 'undefined') {
             // Vanilla JS Tilt Effect
             const initTilt = () => {
