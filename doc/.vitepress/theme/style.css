@@ -133,8 +133,14 @@ body {
 /* Mobile Menu Fix */
 @media (max-width: 768px) {
   .VPNavScreen {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
     background-color: var(--vp-c-bg) !important;
-    padding-top: 80px !important;
+    padding-top: calc(var(--vp-nav-height) + 12px) !important;
+    overflow-y: auto !important;
+    opacity: 1 !important;
   }
 
   .dark .VPNavScreen {
@@ -143,6 +149,7 @@ body {
 
   .VPNavScreenMenu {
     padding: 0 24px !important;
+    display: block !important;
   }
 
   .VPNavScreenMenuGroup {
