@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://nexcore.example.com/</loc>
+  </url>
+  <url>
+    <loc>https://nexcore.example.com/markdown-examples</loc>
+  </url>
+  <url>
+    <loc>https://nexcore.example.com/api-examples</loc>
+  </url>
+  <url>
+    <loc>https://nexcore.example.com/projects</loc>
+  </url>
+  <url>
+    <loc>https://nexcore.example.com/join-us</loc>
+  </url>
+</urlset>
