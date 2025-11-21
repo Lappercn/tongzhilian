@@ -41,19 +41,86 @@ export default defineConfig({
       { text: '加入我们', link: '/join-us' }
     ],
 
-    sidebar: [
-      {
-        text: '团队',
-        collapsed: false, // 默认展开
-        items: [
-          { text: '团队成员', link: '/team' },
-          { text: '技术方向', link: '/api-examples' },
-          { text: '项目案例', link: '/projects' },
-          { text: '团队风采', link: '/moments' },
-          { text: '加入我们', link: '/join-us' }
-        ]
-      }
-    ],
+    sidebar: {
+      '/': [
+        {
+          text: '团队',
+          collapsed: false,
+          items: [
+            { text: '团队成员', link: '/team' },
+            { text: '技术方向', link: '/api-examples' },
+            { text: '项目案例', link: '/projects' },
+            { text: '团队风采', link: '/moments' },
+            { text: '加入我们', link: '/join-us' }
+          ]
+        }
+      ],
+      '/team': [
+        {
+          text: '团队',
+          collapsed: false,
+          items: [
+            { text: '团队成员', link: '/team' },
+            { text: '技术方向', link: '/api-examples' },
+            { text: '项目案例', link: '/projects' },
+            { text: '团队风采', link: '/moments' },
+            { text: '加入我们', link: '/join-us' }
+          ]
+        }
+      ],
+      '/api-examples': [
+        {
+          text: '团队',
+          collapsed: false,
+          items: [
+            { text: '团队成员', link: '/team' },
+            { text: '技术方向', link: '/api-examples' },
+            { text: '项目案例', link: '/projects' },
+            { text: '团队风采', link: '/moments' },
+            { text: '加入我们', link: '/join-us' }
+          ]
+        }
+      ],
+      '/projects': [
+        {
+          text: '团队',
+          collapsed: false,
+          items: [
+            { text: '团队成员', link: '/team' },
+            { text: '技术方向', link: '/api-examples' },
+            { text: '项目案例', link: '/projects' },
+            { text: '团队风采', link: '/moments' },
+            { text: '加入我们', link: '/join-us' }
+          ]
+        }
+      ],
+      '/moments': [
+        {
+          text: '团队',
+          collapsed: false,
+          items: [
+            { text: '团队成员', link: '/team' },
+            { text: '技术方向', link: '/api-examples' },
+            { text: '项目案例', link: '/projects' },
+            { text: '团队风采', link: '/moments' },
+            { text: '加入我们', link: '/join-us' }
+          ]
+        }
+      ],
+      '/join-us': [
+        {
+          text: '团队',
+          collapsed: false,
+          items: [
+            { text: '团队成员', link: '/team' },
+            { text: '技术方向', link: '/api-examples' },
+            { text: '项目案例', link: '/projects' },
+            { text: '团队风采', link: '/moments' },
+            { text: '加入我们', link: '/join-us' }
+          ]
+        }
+      ]
+    },
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/Lappercn/' }
