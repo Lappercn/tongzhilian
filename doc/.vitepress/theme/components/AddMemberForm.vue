@@ -221,7 +221,7 @@
 </template>
 
 <script setup>
-import { ref, reactive, onMounted } from 'vue'
+import { ref, reactive, onMounted, onUnmounted } from 'vue'
 import CaptchaInput from './CaptchaInput.vue'
 import accessKeysConfig from '../../config/access-keys.json'
 
@@ -306,6 +306,11 @@ const closeForm = () => {
     }
   }
 }
+
+// 路由切换/组件卸载时恢复滚动
+onUnmounted(() => {
+  document.body.style.overflow = ''
+})
 
 // 添加标签
 const addTag = () => {
