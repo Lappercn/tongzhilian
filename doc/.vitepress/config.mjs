@@ -1,4 +1,7 @@
 import { defineConfig } from 'vitepress'
+import fs from 'fs'
+import path from 'path'
+import { fileURLToPath } from 'url'
 
 export default defineConfig({
   title: 'NexCore',
@@ -54,6 +57,58 @@ export default defineConfig({
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/Lappercn/' }
+    ]
+  }
+  ,
+  vite: {
+    plugins: [
+      {
+        name: 'members-api',
+        configureServer(server) {
+          const __dirname = path.dirname(fileURLToPath(import.meta.url))
+          const dataDir = path.resolve(__dirname, 'data')
+          const filePath = path.resolve(dataDir, 'members.json')
+
+          if (!fs.existsSync(dataDir)) fs.mkdirSync(dataDir, { recursive: true })
+          if (!fs.existsSync(filePath)) fs.writeFileSync(filePath, '[]', 'utf-8')
+
+          server.middlewares.use((req, res, next) => {
+            if (!req.url?.startsWith('/api/members')) return next()
+
+            res.setHeader('Content-Type', 'application/json; charset=utf-8')
+
+            if (req.method === 'GET') {
+              try {
+                const content = fs.readFileSync(filePath, 'utf-8')
+                res.end(content)
+              } catch (e) {
+                res.statusCode = 500
+                res.end(JSON.stringify({ code: 500, message: 'read_error', data: null }))
+              }
+              return
+            }
+
+            if (req.method === 'POST') {
+              let body = ''
+              req.on('data', (chunk) => { body += chunk })
+              req.on('end', () => {
+                try {
+                  const data = JSON.parse(body || '[]')
+                  fs.writeFileSync(filePath, JSON.stringify(data, null, 2), 'utf-8')
+                  res.end(JSON.stringify({ code: 200, message: 'success', data: { count: Array.isArray(data) ? data.length : 0 } }))
+                } catch (e) {
+                  res.statusCode = 400
+                  res.end(JSON.stringify({ code: 400, message: 'invalid_json', data: null }))
+                }
+              })
+              return
+            }
+
+            res.statusCode = 405
+            res.end(JSON.stringify({ code: 405, message: 'method_not_allowed', data: null }))
+          })
+        }
+      }
     ]
   }
 })

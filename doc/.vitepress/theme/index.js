@@ -3,12 +3,16 @@ import './style.css'
 
 import TeamGallery from './components/TeamGallery.vue'
 import TeamMembers from './components/TeamMembers.vue'
+import AddMemberForm from './components/AddMemberForm.vue'
+import CaptchaInput from './components/CaptchaInput.vue'
 
 export default {
     extends: DefaultTheme,
     enhanceApp({ app }) {
         app.component('TeamGallery', TeamGallery)
         app.component('TeamMembers', TeamMembers)
+        app.component('AddMemberForm', AddMemberForm)
+        app.component('CaptchaInput', CaptchaInput)
         if (typeof window !== 'undefined') {
             // Vanilla JS Tilt Effect
             const initTilt = () => {

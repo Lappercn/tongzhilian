@@ -1,0 +1,10 @@
+{
+    "keys": [
+        "TEAM2025",
+        "JOIN_US_2025",
+        "WELCOME_ABOARD"
+    ],
+    "description": "团队加入密钥配置文件",
+    "instructions": "管理员可以在 keys 数组中添加或删除有效的密钥。用户输入的密钥只要匹配数组中的任意一个即可通过验证。",
+    "lastUpdated": "2025-11-21"
+}

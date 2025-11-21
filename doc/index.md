@@ -18,6 +18,9 @@ hero:
     - theme: alt
       text: 成功案例
       link: /projects
+    - theme: brand
+      text: 加入团队
+      link: /team
 
 features:
   - icon: ⚡️
@@ -61,6 +64,11 @@ features:
       <a href="mailto:shibaizhelianmeng@163.com" class="join-us-btn secondary">投递简历</a>
     </div>
   </div>
+</div>
+
+<div style="margin-top: 2rem;">
+  <AddMemberForm />
+  <p style="text-align:center;color:var(--vp-c-text-2);margin-top:0.5rem;">点击上方按钮，直接提交加入申请</p>
 </div>
 
 <style scoped>

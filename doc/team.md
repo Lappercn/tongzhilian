@@ -7,6 +7,10 @@ title: 团队成员
 
 <TeamMembers />
 
+## 加入我们
+
+<AddMemberForm />
+
 ## 我们的理念
 
 <div class="info custom-block animate-fade-in delay-4" style="margin-top: 2rem;">
