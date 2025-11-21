@@ -11,6 +11,10 @@ title: 团队成员
 
 <AddMemberForm />
 
+::: warning 加入须知
+提交加入申请前请先获取团队加入密钥。请通过邮箱 `shibaizhelianmeng@163.com` 或首页提供的微信二维码联系我们获取密钥。
+:::
+
 ## 我们的理念
 
 <div class="info custom-block animate-fade-in delay-4" style="margin-top: 2rem;">

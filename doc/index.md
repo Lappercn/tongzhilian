@@ -20,7 +20,7 @@ hero:
       link: /projects
     - theme: brand
       text: 加入团队
-      link: /team
+      link: /join-us
 
 features:
   - icon: ⚡️
@@ -62,13 +62,14 @@ features:
     <div class="join-us-actions">
       <a href="/team" class="join-us-btn primary">了解团队</a>
       <a href="mailto:shibaizhelianmeng@163.com" class="join-us-btn secondary">投递简历</a>
+      <a href="/join-us" class="join-us-btn primary" style="margin-left:0.5rem;">联系我们</a>
     </div>
   </div>
 </div>
 
 <div style="margin-top: 2rem;">
   <AddMemberForm />
-  <p style="text-align:center;color:var(--vp-c-text-2);margin-top:0.5rem;">点击上方按钮，直接提交加入申请</p>
+  <p style="text-align:center;color:var(--vp-c-text-2);margin-top:0.5rem;">加入需密钥，请先通过邮箱或微信联系获取密钥后再提交。前往 <a href="/join-us">加入我们</a> 获取联系方式。</p>
 </div>
 
 <style scoped>

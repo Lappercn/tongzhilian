@@ -5,6 +5,7 @@ import TeamGallery from './components/TeamGallery.vue'
 import TeamMembers from './components/TeamMembers.vue'
 import AddMemberForm from './components/AddMemberForm.vue'
 import CaptchaInput from './components/CaptchaInput.vue'
+import QrLightbox from './components/QrLightbox.vue'
 
 export default {
     extends: DefaultTheme,
@@ -13,6 +14,7 @@ export default {
         app.component('TeamMembers', TeamMembers)
         app.component('AddMemberForm', AddMemberForm)
         app.component('CaptchaInput', CaptchaInput)
+        app.component('QrLightbox', QrLightbox)
         if (typeof window !== 'undefined') {
             // Vanilla JS Tilt Effect
             const initTilt = () => {

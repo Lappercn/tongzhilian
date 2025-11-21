@@ -156,7 +156,9 @@
                   </button>
                 </div>
                 <div class="key-hint">
-                  💡 请联系团队管理员获取加入密钥
+                  💡 加入需密钥，请先通过 <a href="/join-us">加入我们</a> 或邮箱
+                  <a href="mailto:shibaizhelianmeng@163.com">shibaizhelianmeng@163.com</a>
+                  ，也可使用飞书（二维码见加入我们页）联系我们获取密钥
                 </div>
                 <div v-if="keyError" class="error-message">
                   {{ keyError }}
@@ -837,12 +839,28 @@ const resetForm = () => {
 }
 
 .key-hint {
-  margin-top: 0.5rem;
-  font-size: 0.875rem;
-  color: var(--vp-c-text-3);
+  margin-top: 0.75rem;
+  font-size: 0.95rem;
+  color: var(--vp-c-text-2);
   display: flex;
   align-items: center;
-  gap: 0.25rem;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 10px;
+}
+.key-hint::before {
+  content: '🔑';
+  font-size: 1.1rem;
+}
+.key-hint a {
+  color: var(--vp-c-brand-1);
+  text-decoration: none;
+  font-weight: 600;
+}
+.key-hint a:hover {
+  text-decoration: underline;
 }
 
 /* 错误消息 */

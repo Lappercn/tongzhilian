@@ -123,6 +123,11 @@ body {
   background-color: transparent !important;
 }
 
+/* Hide unused hamburger toggle */
+.VPNavBarHamburger {
+  display: none !important;
+}
+
 /* Mobile Menu Fix */
 @media (max-width: 768px) {
   .VPNavScreen {
