@@ -495,6 +495,34 @@ body {
   }
 }
 
+@media (max-width: 768px) {
+  .team-grid,
+  .moments-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+  .team-card,
+  .moment-card {
+    padding: 20px 16px;
+    border-radius: 16px;
+  }
+  .member-avatar {
+    width: 84px;
+    height: 84px;
+    margin-bottom: 1rem;
+  }
+  .member-name {
+    font-size: 1.2rem;
+  }
+  .member-role {
+    font-size: 0.85rem;
+    margin-bottom: 0.8rem;
+  }
+  .member-desc {
+    font-size: 0.9rem;
+  }
+}
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 10px;

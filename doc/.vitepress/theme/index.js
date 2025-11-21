@@ -16,8 +16,9 @@ export default {
         app.component('CaptchaInput', CaptchaInput)
         app.component('QrLightbox', QrLightbox)
         if (typeof window !== 'undefined') {
-            // Vanilla JS Tilt Effect
             const initTilt = () => {
+                const isDesktop = window.matchMedia('(pointer: fine)').matches && window.innerWidth >= 769
+                if (!isDesktop) return
                 const cards = document.querySelectorAll('.team-card, .VPFeature');
 
                 cards.forEach(card => {
@@ -45,9 +46,7 @@ export default {
             window.addEventListener('load', initTilt);
 
             // Observer for dynamic content (like route changes in SPA)
-            const observer = new MutationObserver((mutations) => {
-                initTilt();
-            });
+            const observer = new MutationObserver(() => { initTilt() });
 
             observer.observe(document.body, {
                 childList: true,

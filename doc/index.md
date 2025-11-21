@@ -1,5 +1,6 @@
 ---
 layout: home
+outline: false
 
 hero:
   name: "NexCore"

@@ -1039,16 +1039,27 @@ const resetForm = () => {
 /* 响应式 */
 @media (max-width: 768px) {
   .modal-container {
-    max-height: 100vh;
-    border-radius: 0;
+    max-height: 95vh;
+    max-width: none;
+    width: calc(100vw - 2rem);
+    border-radius: 12px;
   }
 
   .member-form {
-    padding: 1.5rem;
+    padding: 1rem;
+  }
+
+  .preview-image {
+    height: 220px;
   }
 
   .form-actions {
     flex-direction: column;
+  }
+
+  .add-member-btn {
+    width: 100%;
+    justify-content: center;
   }
 }
 </style>

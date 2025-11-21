@@ -50,4 +50,10 @@ const downloadName = props.downloadName
 
 .qr-modal-enter-active, .qr-modal-leave-active { transition: all 0.2s ease; }
 .qr-modal-enter-from, .qr-modal-leave-to { opacity: 0; transform: scale(0.98); }
+
+@media (max-width: 600px) {
+  .qr-dialog { width: calc(100vw - 2rem); padding: 0.75rem; }
+  .qr-actions { flex-direction: column; }
+  .qr-btn { width: 100%; text-align: center; }
+}
 </style>
