@@ -123,9 +123,11 @@ body {
   background-color: transparent !important;
 }
 
-/* Hide unused hamburger toggle */
-.VPNavBarHamburger {
-  display: none !important;
+/* Hide hamburger on desktop, keep it for mobile */
+@media (min-width: 769px) {
+  .VPNavBarHamburger {
+    display: none !important;
+  }
 }
 
 /* Mobile Menu Fix */
