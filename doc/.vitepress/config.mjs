@@ -60,21 +60,21 @@ export default defineConfig({
     ['meta', { property: 'og:description', content: 'NexCore 团队，重庆，专注 AI 落地、前后端与算法模型工程化' }],
     ['meta', { property: 'og:type', content: 'website' }],
     ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
-    ['link', { rel: 'icon', href: '/wx.jpg' }],
+    ['link', { rel: 'icon', href: '/logo.png' }],
     ['link', { rel: 'preconnect', href: 'https://fonts.googleapis.com' }],
     ['link', { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' }],
     ['link', { href: 'https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap', rel: 'stylesheet' }],
-    ['script', { type: 'application/ld+json' }, `{"@context":"https://schema.org","@type":"Organization","name":"NexCore","url":"https://nexcore.example.com","email":"shibaizhelianmeng@163.com","address":{"addressLocality":"重庆","addressCountry":"CN"}}`]
+    ['script', { type: 'application/ld+json' }, `{"@context":"https://schema.org","@type":"Organization","name":"NexCore","url":"https://tongzhilian.cn","logo":"https://tongzhilian.cn/logo.png","email":"shibaizhelianmeng@163.com","address":{"addressLocality":"重庆","addressCountry":"CN"}}`]
   ],
   transformHead: ({ page }) => {
     const path = page && page.relativePath
       ? '/' + page.relativePath.replace(/\\/g, '/').replace(/index\.md$/, '').replace(/\.md$/, '')
       : '/';
-    const url = 'https://nexcore.example.com' + path;
+    const url = 'https://tongzhilian.cn' + path;
     const title = page?.title || 'NexCore'
     const desc = page?.description || '重庆个人团队，专注 AI 落地、前后端与算法模型工程化'
     const img = pickOgImage()
-    const imgAbs = 'https://nexcore.example.com' + img
+    const imgAbs = 'https://tongzhilian.cn' + img
     return [
       ['link', { rel: 'canonical', href: url }],
       ['meta', { property: 'og:url', content: url }],
