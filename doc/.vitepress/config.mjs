@@ -33,6 +33,24 @@ const ensureOgAssets = () => {
   }
 }
 
+const generateSitemap = (images) => {
+  try {
+    const site = 'https://tongzhilian.cn'
+    const routes = ['/', '/team', '/api-examples', '/projects', '/moments', '/join-us']
+    const header = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">'
+    const footer = '</urlset>'
+    const body = routes.map(r => {
+      const imgs = (images || []).slice(0, 10).map(img => `\n  <image:image>\n    <image:loc>${site}${img}</image:loc>\n  </image:image>`).join('')
+      return `\n<url>\n  <loc>${site}${r}</loc>${imgs}\n</url>`
+    }).join('')
+    const xml = `${header}${body}\n${footer}`
+    if (!fs.existsSync(publicDir)) fs.mkdirSync(publicDir, { recursive: true })
+    fs.writeFileSync(path.resolve(publicDir, 'sitemap.xml'), xml, 'utf-8')
+    const robots = `User-agent: *\nAllow: /\nSitemap: ${site}/sitemap.xml\n`
+    fs.writeFileSync(path.resolve(publicDir, 'robots.txt'), robots, 'utf-8')
+  } catch {}
+}
+
 let ogImages = []
 try {
   ensureOgAssets()
@@ -72,7 +90,7 @@ export default defineConfig({
       : '/';
     const url = 'https://tongzhilian.cn' + path;
     const title = page?.title || 'NexCore'
-    const desc = page?.description || 'NexCore | 重庆 · 专注 AI 落地与全栈工程化：模型微调、RAG 知识库、MLOps；基于 Vue3 + Flask/FastAPI 与 MongoDB，遵循 RESTful API 契约与 CI/CD，助力企业 AI 研发与工程实践'
+    const desc = page?.description || 'NexCore | 重庆 · 专注 AI 落地与全栈工程化：模型微调、RAG 知识库、MLOps；基于 Vue3 + Flask/FastAPI 与 MongoDB，遵循 RESTful API 契约与 CI/CD；团队精神：务实创新、协作共赢、快速交付、卓越质量'
     const img = pickOgImage()
     const imgAbs = 'https://tongzhilian.cn' + img
     return [
@@ -237,8 +255,8 @@ export default defineConfig({
       ,
       {
         name: 'og-assets',
-        configureServer() { try { ensureOgAssets() } catch {} },
-        buildStart() { try { ensureOgAssets() } catch {} }
+        configureServer() { try { ensureOgAssets(); generateSitemap(ogImages) } catch {} },
+        buildStart() { try { ensureOgAssets(); generateSitemap(ogImages) } catch {} }
       }
     ]
   }
