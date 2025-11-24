@@ -5,14 +5,42 @@ import { fileURLToPath } from 'url'
 
 const __dir = path.dirname(fileURLToPath(import.meta.url))
 const publicDir = path.resolve(__dir, '../public')
+const teamDir = path.resolve(__dir, '../团队风采')
+const ogDir = path.resolve(publicDir, 'og')
+
+const listFiles = (dir) => {
+  if (!fs.existsSync(dir)) return []
+  const out = []
+  const entries = fs.readdirSync(dir, { withFileTypes: true })
+  for (const e of entries) {
+    const p = path.resolve(dir, e.name)
+    if (e.isDirectory()) out.push(...listFiles(p))
+    else out.push(p)
+  }
+  return out
+}
+
+const ensureOgAssets = () => {
+  if (!fs.existsSync(teamDir)) return
+  if (!fs.existsSync(ogDir)) fs.mkdirSync(ogDir, { recursive: true })
+  const imgs = listFiles(teamDir).filter(p => /\.(png|jpe?g|webp|gif)$/i.test(p))
+  for (const src of imgs) {
+    const name = path.basename(src)
+    const dest = path.resolve(ogDir, name)
+    if (!fs.existsSync(dest)) {
+      try { fs.copyFileSync(src, dest) } catch {}
+    }
+  }
+}
+
 let ogImages = []
 try {
-  if (fs.existsSync(publicDir)) {
-    const files = fs.readdirSync(publicDir)
-    ogImages = files
-      .filter(f => /\.(png|jpe?g|webp|gif)$/i.test(f))
-      .map(f => '/' + f)
-  }
+  ensureOgAssets()
+  const candidates = [...listFiles(publicDir), ...listFiles(ogDir)]
+  ogImages = candidates
+    .filter(f => /\.(png|jpe?g|webp|gif)$/i.test(f))
+    .map(f => '/' + path.relative(publicDir, f).replace(/\\/g, '/'))
+    .concat(['/logo.png'])
 } catch {}
 const pickOgImage = () => {
   if (!ogImages.length) return '/logo.png'
@@ -205,6 +233,12 @@ export default defineConfig({
             res.end(JSON.stringify({ code: 405, message: 'method_not_allowed', data: null }))
           })
         }
+      }
+      ,
+      {
+        name: 'og-assets',
+        configureServer() { try { ensureOgAssets() } catch {} },
+        buildStart() { try { ensureOgAssets() } catch {} }
       }
     ]
   }
