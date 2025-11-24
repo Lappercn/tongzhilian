@@ -2,12 +2,6 @@ import { defineConfig } from 'vitepress'
 import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
-import crypto from 'node:crypto'
-
-// Node < 18 没有 globalThis.crypto，Vite 5 需要 web crypto
-if (!globalThis.crypto || typeof globalThis.crypto.getRandomValues !== 'function') {
-  globalThis.crypto = crypto.webcrypto
-}
 
 export default defineConfig({
   title: 'NexCore',

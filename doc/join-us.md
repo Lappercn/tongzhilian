@@ -174,4 +174,11 @@ outline: deep
   .join-hero { grid-template-columns: 1fr; }
   .contact-card { grid-template-columns: 1fr; }
 }
+
+@media (max-width: 600px) {
+  .hero-actions { flex-direction: column; }
+  .btn { width: 100%; justify-content: center; }
+  .media-grid { grid-template-columns: 1fr; }
+  .qrcodes { grid-template-columns: 1fr; }
+}
 </style>
