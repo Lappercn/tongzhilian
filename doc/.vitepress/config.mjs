@@ -72,7 +72,7 @@ export default defineConfig({
       : '/';
     const url = 'https://tongzhilian.cn' + path;
     const title = page?.title || 'NexCore'
-    const desc = page?.description || '重庆个人团队，专注 AI 落地、前后端与算法模型工程化'
+    const desc = page?.description || 'NexCore | 重庆 · 专注 AI 落地与全栈工程化：模型微调、RAG 知识库、MLOps；基于 Vue3 + Flask/FastAPI 与 MongoDB，遵循 RESTful API 契约与 CI/CD，助力企业 AI 研发与工程实践'
     const img = pickOgImage()
     const imgAbs = 'https://tongzhilian.cn' + img
     return [
