@@ -3,6 +3,23 @@ import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
 
+const __dir = path.dirname(fileURLToPath(import.meta.url))
+const publicDir = path.resolve(__dir, '../public')
+let ogImages = []
+try {
+  if (fs.existsSync(publicDir)) {
+    const files = fs.readdirSync(publicDir)
+    ogImages = files
+      .filter(f => /\.(png|jpe?g|webp|gif)$/i.test(f))
+      .map(f => '/' + f)
+  }
+} catch {}
+const pickOgImage = () => {
+  if (!ogImages.length) return '/logo.png'
+  const i = Math.floor(Math.random() * ogImages.length)
+  return ogImages[i]
+}
+
 export default defineConfig({
   title: 'NexCore',
   description: '重庆个人团队，专注 AI 落地、前后端与算法模型工程化',
@@ -26,8 +43,21 @@ export default defineConfig({
       ? '/' + page.relativePath.replace(/\\/g, '/').replace(/index\.md$/, '').replace(/\.md$/, '')
       : '/';
     const url = 'https://nexcore.example.com' + path;
+    const title = page?.title || 'NexCore'
+    const desc = page?.description || '重庆个人团队，专注 AI 落地、前后端与算法模型工程化'
+    const img = pickOgImage()
+    const imgAbs = 'https://nexcore.example.com' + img
     return [
-      ['link', { rel: 'canonical', href: url }]
+      ['link', { rel: 'canonical', href: url }],
+      ['meta', { property: 'og:url', content: url }],
+      ['meta', { property: 'og:title', content: title }],
+      ['meta', { property: 'og:description', content: desc }],
+      ['meta', { property: 'og:image', content: imgAbs }],
+      ['meta', { property: 'og:site_name', content: 'NexCore' }],
+      ['meta', { property: 'og:locale', content: 'zh_CN' }],
+      ['meta', { name: 'twitter:title', content: title }],
+      ['meta', { name: 'twitter:description', content: desc }],
+      ['meta', { name: 'twitter:image', content: imgAbs }]
     ]
   },
   themeConfig: {
