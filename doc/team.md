@@ -1,45 +1,28 @@
 ---
+layout: doc
 title: 团队成员
-outline: false
-sidebar: false
-description: NexCore 团队核心成员与技能栈一览，涵盖前后端工程化与 AI 算法研发能力。
 ---
 
-# 团队成员
+# 核心团队
 
-我们是 NexCore，一家位于重庆的个人团队。目前 4 名成员：
+<TeamMembers />
 
-## 成员一览
+## 加入我们
 
-| 姓名   | 角色             | 擅长领域                           |
-|--------|------------------|------------------------------------|
-| 张学东 | 前后端开发       | Vue3 + Element-Plus / Flask / MongoDB |
-| 李万江 | 前后端开发       | Vue3 + Element-Plus / Flask / MongoDB |
-| 张君豪 | 算法模型         | 模型研发、数据处理、工程落地       |
-| 杨家俊 | 算法模型         | 模型研发、数据处理、工程落地       |
+<AddMemberForm />
 
-## 协作方式
-
-::: info 协作准则
-- 前后端解耦：统一通过 RESTful API（`/api/v1/*`）交互
-- API 契约：采用 OpenAPI/Swagger 定义与维护
-- 代码规范：高内聚、低耦合；通用工具与常量独立维护
+::: warning 加入须知
+提交加入申请前请先获取团队加入密钥。请通过邮箱 `shibaizhelianmeng@163.com` 或首页提供的微信二维码联系我们获取密钥。
 :::
 
-::: tip 工程实践
-- 前端：服务层封装、状态管理与路由分离、移动端适配
-- 后端：分层（Controller → Service → Repository）与中间件治理
-- 测试与文档：单测/集成测试，接口文档同步
-:::
+## 我们的理念
 
-## 联系我们
+<div class="info custom-block animate-fade-in delay-4" style="margin-top: 2rem;">
+  <p class="custom-block-title">🌟 追求卓越</p>
+  <p>我们不仅仅是写代码，更是解决问题。从需求分析到最终交付，我们坚持高标准的工程质量和用户体验。</p>
+</div>
 
-- 邮箱：shibaizhelianmeng@163.com
-- 微信：扫描下方二维码添加好友
-- GitHub：后续统一公开仓库与示例
-- 地点：重庆
-
-欢迎交流合作。
-
-![微信二维码](/wx.jpg)
-
+<div class="tip custom-block animate-fade-in delay-4">
+  <p class="custom-block-title">🤝 开放协作</p>
+  <p>我们相信团队的力量。通过高效的沟通与协作，我们能够克服挑战，创造出超越预期的产品。</p>
+</div>
