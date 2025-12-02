@@ -93,6 +93,8 @@ export default defineConfig({
     const desc = page?.description || 'NexCore | 重庆 · 专注 AI 落地与全栈工程化：模型微调、RAG 知识库、MLOps；基于 Vue3 + Flask/FastAPI 与 MongoDB，遵循 RESTful API 契约与 CI/CD；团队精神：务实创新、协作共赢、快速交付、卓越质量'
     const img = pickOgImage()
     const imgAbs = 'https://tongzhilian.cn' + img
+    const isEn = path.startsWith('/en/')
+    const locale = isEn ? 'en_US' : 'zh_CN'
     return [
       ['link', { rel: 'canonical', href: url }],
       ['meta', { property: 'og:url', content: url }],
@@ -100,104 +102,79 @@ export default defineConfig({
       ['meta', { property: 'og:description', content: desc }],
       ['meta', { property: 'og:image', content: imgAbs }],
       ['meta', { property: 'og:site_name', content: 'NexCore' }],
-      ['meta', { property: 'og:locale', content: 'zh_CN' }],
+      ['meta', { property: 'og:locale', content: locale }],
       ['meta', { name: 'twitter:title', content: title }],
       ['meta', { name: 'twitter:description', content: desc }],
       ['meta', { name: 'twitter:image', content: imgAbs }]
     ]
   },
+  locales: {
+    root: {
+      label: '简体中文',
+      lang: 'zh-CN',
+      title: 'NexCore',
+      description: '重庆个人团队，专注 AI 落地、前后端与算法模型工程化',
+      themeConfig: {
+        nav: [
+          { text: '首页', link: '/' },
+          { text: '团队成员', link: '/team' },
+          { text: '技术方向', link: '/api-examples' },
+          { text: '项目案例', link: '/projects' },
+          { text: '团队风采', link: '/moments' },
+          { text: '加入我们', link: '/join-us' }
+        ],
+        sidebar: {
+          '/': [
+            {
+              text: '团队',
+              collapsed: false,
+              items: [
+                { text: '团队成员', link: '/team' },
+                { text: '技术方向', link: '/api-examples' },
+                { text: '项目案例', link: '/projects' },
+                { text: '团队风采', link: '/moments' },
+                { text: '加入我们', link: '/join-us' }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    en: {
+      label: 'English',
+      lang: 'en-US',
+      link: '/en/',
+      title: 'NexCore',
+      description: 'NexCore Team, focused on AI implementation and full-stack engineering.',
+      themeConfig: {
+        nav: [
+          { text: 'Home', link: '/en/' },
+          { text: 'Team', link: '/en/team' },
+          { text: 'Tech Stack', link: '/en/api-examples' },
+          { text: 'Projects', link: '/en/projects' },
+          { text: 'Moments', link: '/en/moments' },
+          { text: 'Join Us', link: '/en/join-us' }
+        ],
+        sidebar: {
+          '/en/': [
+            {
+              text: 'Team',
+              collapsed: false,
+              items: [
+                { text: 'Team Members', link: '/en/team' },
+                { text: 'Tech Stack', link: '/en/api-examples' },
+                { text: 'Projects', link: '/en/projects' },
+                { text: 'Moments', link: '/en/moments' },
+                { text: 'Join Us', link: '/en/join-us' }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  },
   themeConfig: {
     logo: '/logo.png',
-    nav: [
-      { text: '首页', link: '/' },
-      { text: '团队成员', link: '/team' },
-      { text: '技术方向', link: '/api-examples' },
-      { text: '项目案例', link: '/projects' },
-      { text: '团队风采', link: '/moments' },
-      { text: '加入我们', link: '/join-us' }
-    ],
-
-    sidebar: {
-      '/': [
-        {
-          text: '团队',
-          collapsed: false,
-          items: [
-            { text: '团队成员', link: '/team' },
-            { text: '技术方向', link: '/api-examples' },
-            { text: '项目案例', link: '/projects' },
-            { text: '团队风采', link: '/moments' },
-            { text: '加入我们', link: '/join-us' }
-          ]
-        }
-      ],
-      '/team': [
-        {
-          text: '团队',
-          collapsed: false,
-          items: [
-            { text: '团队成员', link: '/team' },
-            { text: '技术方向', link: '/api-examples' },
-            { text: '项目案例', link: '/projects' },
-            { text: '团队风采', link: '/moments' },
-            { text: '加入我们', link: '/join-us' }
-          ]
-        }
-      ],
-      '/api-examples': [
-        {
-          text: '团队',
-          collapsed: false,
-          items: [
-            { text: '团队成员', link: '/team' },
-            { text: '技术方向', link: '/api-examples' },
-            { text: '项目案例', link: '/projects' },
-            { text: '团队风采', link: '/moments' },
-            { text: '加入我们', link: '/join-us' }
-          ]
-        }
-      ],
-      '/projects': [
-        {
-          text: '团队',
-          collapsed: false,
-          items: [
-            { text: '团队成员', link: '/team' },
-            { text: '技术方向', link: '/api-examples' },
-            { text: '项目案例', link: '/projects' },
-            { text: '团队风采', link: '/moments' },
-            { text: '加入我们', link: '/join-us' }
-          ]
-        }
-      ],
-      '/moments': [
-        {
-          text: '团队',
-          collapsed: false,
-          items: [
-            { text: '团队成员', link: '/team' },
-            { text: '技术方向', link: '/api-examples' },
-            { text: '项目案例', link: '/projects' },
-            { text: '团队风采', link: '/moments' },
-            { text: '加入我们', link: '/join-us' }
-          ]
-        }
-      ],
-      '/join-us': [
-        {
-          text: '团队',
-          collapsed: false,
-          items: [
-            { text: '团队成员', link: '/team' },
-            { text: '技术方向', link: '/api-examples' },
-            { text: '项目案例', link: '/projects' },
-            { text: '团队风采', link: '/moments' },
-            { text: '加入我们', link: '/join-us' }
-          ]
-        }
-      ]
-    },
-
     socialLinks: [
       { icon: 'github', link: 'https://github.com/Lappercn/' }
     ]

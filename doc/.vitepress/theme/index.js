@@ -1,4 +1,5 @@
 import DefaultTheme from 'vitepress/theme'
+import Layout from './Layout.vue'
 import './style.css'
 
 import TeamGallery from './components/TeamGallery.vue'
@@ -9,6 +10,7 @@ import QrLightbox from './components/QrLightbox.vue'
 
 export default {
     extends: DefaultTheme,
+    Layout,
     enhanceApp({ app }) {
         app.component('TeamGallery', TeamGallery)
         app.component('TeamMembers', TeamMembers)

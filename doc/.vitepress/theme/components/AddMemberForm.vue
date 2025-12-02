@@ -7,7 +7,7 @@
       class="add-member-btn"
     >
       <span class="btn-icon">➕</span>
-      <span>加入我们的团队</span>
+      <span>{{ t('joinBtn') }}</span>
     </button>
 
     <!-- 表单弹窗 -->
@@ -16,19 +16,19 @@
         <div v-if="showForm" class="modal-overlay" @click.self="closeForm">
           <div class="modal-container">
             <div class="modal-header">
-              <h2>加入团队</h2>
+              <h2>{{ t('modalTitle') }}</h2>
               <button @click="closeForm" class="close-btn">✕</button>
             </div>
 
             <form @submit.prevent="handleSubmit" class="member-form">
               <!-- 姓名 -->
               <div class="form-group">
-                <label for="name">姓名 <span class="required">*</span></label>
+                <label for="name">{{ t('name') }} <span class="required">*</span></label>
                 <input 
                   id="name"
                   v-model="formData.name"
                   type="text"
-                  placeholder="请输入您的姓名"
+                  :placeholder="t('namePlaceholder')"
                   required
                   maxlength="20"
                 />
@@ -36,12 +36,12 @@
 
               <!-- 角色/职位 -->
               <div class="form-group">
-                <label for="role">角色/职位 <span class="required">*</span></label>
+                <label for="role">{{ t('role') }} <span class="required">*</span></label>
                 <input 
                   id="role"
                   v-model="formData.role"
                   type="text"
-                  placeholder="例如: 前端开发工程师"
+                  :placeholder="t('rolePlaceholder')"
                   required
                   maxlength="50"
                 />
@@ -49,11 +49,11 @@
 
               <!-- 个人简介 -->
               <div class="form-group">
-                <label for="desc">个人简介 <span class="required">*</span></label>
+                <label for="desc">{{ t('desc') }} <span class="required">*</span></label>
                 <textarea 
                   id="desc"
                   v-model="formData.desc"
-                  placeholder="请简要介绍您的技能和经验..."
+                  :placeholder="t('descPlaceholder')"
                   required
                   rows="4"
                   maxlength="200"
@@ -63,7 +63,7 @@
 
               <!-- 技能标签 -->
               <div class="form-group">
-                <label for="tags">技能标签 <span class="required">*</span></label>
+                <label for="tags">{{ t('tags') }} <span class="required">*</span></label>
                 <div class="tags-input-wrapper">
                   <div class="tags-display">
                     <span 
@@ -85,7 +85,7 @@
                       v-model="currentTag"
                       @keydown.enter.prevent="addTag"
                       type="text"
-                      placeholder="输入技能后按回车添加 (最多6个)"
+                      :placeholder="t('tagsPlaceholder')"
                       maxlength="20"
                       :disabled="formData.tags.length >= 6"
                     />
@@ -95,7 +95,7 @@
                       class="add-tag-btn"
                       :disabled="formData.tags.length >= 6 || !currentTag.trim()"
                     >
-                      添加
+                      {{ t('addTagBtn') }}
                     </button>
                   </div>
                 </div>
@@ -103,7 +103,7 @@
 
               <!-- 照片上传 -->
               <div class="form-group">
-                <label for="photo">个人照片 <span class="required">*</span></label>
+                <label for="photo">{{ t('photo') }} <span class="required">*</span></label>
                 <div class="upload-area">
                   <input 
                     id="photo"
@@ -116,18 +116,18 @@
                   
                   <div v-if="!previewUrl" class="upload-placeholder" @click="triggerFileInput">
                     <div class="upload-icon">📷</div>
-                    <p>点击上传照片</p>
-                    <p class="upload-hint">支持 JPG、PNG、WEBP 格式</p>
+                    <p>{{ t('uploadHint') }}</p>
+                    <p class="upload-hint">{{ t('uploadFormat') }}</p>
                   </div>
                   
                   <div v-else class="preview-container">
                     <img :src="previewUrl" alt="预览" class="preview-image" />
                     <div class="preview-actions">
                       <button type="button" @click="triggerFileInput" class="change-btn">
-                        更换照片
+                        {{ t('changePhoto') }}
                       </button>
                       <button type="button" @click="removePhoto" class="remove-btn">
-                        删除
+                        {{ t('deletePhoto') }}
                       </button>
                     </div>
                   </div>
@@ -136,13 +136,13 @@
 
               <!-- 加入密钥 -->
               <div class="form-group">
-                <label for="accessKey">加入密钥 <span class="required">*</span></label>
+                <label for="accessKey">{{ t('accessKey') }} <span class="required">*</span></label>
                 <div class="key-input-wrapper">
                   <input 
                     id="accessKey"
                     v-model="accessKey"
                     :type="showKey ? 'text' : 'password'"
-                    placeholder="请输入团队提供的加入密钥"
+                    :placeholder="t('keyPlaceholder')"
                     required
                     class="key-input"
                   />
@@ -150,15 +150,13 @@
                     type="button"
                     @click="showKey = !showKey"
                     class="toggle-key-btn"
-                    :title="showKey ? '隐藏密钥' : '显示密钥'"
+                    :title="showKey ? 'Hide' : 'Show'"
                   >
                     {{ showKey ? '👁️' : '👁️‍🗨️' }}
                   </button>
                 </div>
                 <div class="key-hint">
-                  💡 加入需密钥，请先通过 <a href="/join-us">加入我们</a> 或邮箱
-                  <a href="mailto:shibaizhelianmeng@163.com">shibaizhelianmeng@163.com</a>
-                  ，也可使用飞书（二维码见加入我们页）联系我们获取密钥
+                  💡 {{ t('keyHint') }}
                 </div>
                 <div v-if="keyError" class="error-message">
                   {{ keyError }}
@@ -167,9 +165,10 @@
 
               <!-- 验证码 -->
               <div class="form-group">
-                <label>验证码 <span class="required">*</span></label>
+                <label>{{ t('captcha') }} <span class="required">*</span></label>
                 <CaptchaInput 
                   ref="captchaRef"
+                  :placeholder="t('captchaPlaceholder')"
                   @validate="handleCaptchaValidate"
                 />
                 <div v-if="captchaError" class="error-message">
@@ -184,17 +183,17 @@
                   @click="closeForm"
                   class="btn btn-cancel"
                 >
-                  取消
+                  {{ t('cancel') }}
                 </button>
                 <button 
                   type="submit" 
                   class="btn btn-submit"
                   :disabled="isSubmitting"
                 >
-                  <span v-if="!isSubmitting">提交申请</span>
+                  <span v-if="!isSubmitting">{{ t('submit') }}</span>
                   <span v-else class="loading">
                     <span class="spinner"></span>
-                    提交中...
+                    {{ t('submitting') }}
                   </span>
                 </button>
               </div>
@@ -205,10 +204,10 @@
               <div v-if="submitSuccess" class="success-overlay">
                 <div class="success-message">
                   <div class="success-icon">✓</div>
-                  <h3>提交成功!</h3>
-                  <p>您的申请已提交,我们会尽快审核。</p>
+                  <h3>{{ t('successTitle') }}</h3>
+                  <p>{{ t('successMsg') }}</p>
                   <button @click="resetForm" class="btn btn-primary">
-                    继续添加
+                    {{ t('continue') }}
                   </button>
                 </div>
               </div>
@@ -221,9 +220,51 @@
 </template>
 
 <script setup>
-import { ref, reactive, onMounted, onUnmounted } from 'vue'
+import { ref, reactive, onMounted, onUnmounted, computed } from 'vue'
+import { useData } from 'vitepress'
 import CaptchaInput from './CaptchaInput.vue'
 import accessKeysConfig from '../../config/access-keys.json'
+
+const { lang } = useData()
+const isEn = computed(() => lang.value.startsWith('en'))
+
+const t = (key) => {
+  const texts = {
+    joinBtn: { zh: '加入我们的团队', en: 'Join Our Team' },
+    modalTitle: { zh: '加入团队', en: 'Join Team' },
+    name: { zh: '姓名', en: 'Name' },
+    namePlaceholder: { zh: '请输入您的姓名', en: 'Enter your name' },
+    role: { zh: '角色/职位', en: 'Role/Position' },
+    rolePlaceholder: { zh: '例如: 前端开发工程师', en: 'e.g. Frontend Engineer' },
+    desc: { zh: '个人简介', en: 'Bio' },
+    descPlaceholder: { zh: '请简要介绍您的技能和经验...', en: 'Briefly introduce your skills and experience...' },
+    tags: { zh: '技能标签', en: 'Skills' },
+    tagsPlaceholder: { zh: '输入技能后按回车添加 (最多6个)', en: 'Press Enter to add (Max 6)' },
+    addTagBtn: { zh: '添加', en: 'Add' },
+    photo: { zh: '个人照片', en: 'Photo' },
+    uploadHint: { zh: '点击上传照片', en: 'Click to upload' },
+    uploadFormat: { zh: '支持 JPG、PNG、WEBP 格式', en: 'Supports JPG, PNG, WEBP' },
+    changePhoto: { zh: '更换照片', en: 'Change' },
+    deletePhoto: { zh: '删除', en: 'Delete' },
+    accessKey: { zh: '加入密钥', en: 'Access Key' },
+    keyPlaceholder: { zh: '请输入团队提供的加入密钥', en: 'Enter the access key' },
+    keyHint: { zh: '加入需密钥，请通过"加入我们"页获取或联系管理员', en: 'Access Key required, please contact admin or check "Join Us" page' },
+    captcha: { zh: '验证码', en: 'Captcha' },
+    captchaPlaceholder: { zh: '请输入验证码', en: 'Enter Captcha' },
+    cancel: { zh: '取消', en: 'Cancel' },
+    submit: { zh: '提交申请', en: 'Submit Application' },
+    submitting: { zh: '提交中...', en: 'Submitting...' },
+    successTitle: { zh: '提交成功!', en: 'Success!' },
+    successMsg: { zh: '您的申请已提交,我们会尽快审核。', en: 'Application submitted, we will review it soon.' },
+    continue: { zh: '继续添加', en: 'Add Another' },
+    required: { zh: '请填写所有必填项', en: 'Please fill in all required fields' },
+    duplicate: { zh: '该成员已存在,请勿重复添加', en: 'Member already exists' },
+    keyError: { zh: '密钥错误,请输入正确的团队加入密钥', en: 'Invalid Access Key' },
+    captchaError: { zh: '验证码错误,请重新输入', en: 'Invalid Captcha, please try again' },
+    uploadError: { zh: '请上传 JPG、PNG 或 WEBP 格式的图片', en: 'Please upload JPG, PNG or WEBP image' }
+  }
+  return texts[key]?.[isEn.value ? 'en' : 'zh'] || key
+}
 
 const showForm = ref(false)
 const isSubmitting = ref(false)
@@ -339,7 +380,7 @@ const handleFileChange = (event) => {
   // 验证文件类型
   const validTypes = ['image/jpeg', 'image/png', 'image/jpg', 'image/webp']
   if (!validTypes.includes(file.type)) {
-    alert('请上传 JPG、PNG 或 WEBP 格式的图片')
+    alert(t('uploadError'))
     return
   }
 
@@ -384,20 +425,20 @@ const convertImageToBase64 = (file) => {
 const handleSubmit = async () => {
   // 先验证密钥
   if (!validateAccessKey(accessKey.value)) {
-    keyError.value = '密钥错误,请输入正确的团队加入密钥'
+    keyError.value = t('keyError')
     return
   }
   keyError.value = ''
 
   // 验证验证码
   if (!captchaRef.value?.validate()) {
-    captchaError.value = '验证码错误,请重新输入'
+    captchaError.value = t('captchaError')
     return
   }
 
   // 验证必填项
   if (!formData.name || !formData.role || !formData.desc || formData.tags.length === 0 || !formData.photo) {
-    alert('请填写所有必填项')
+    alert(t('required'))
     return
   }
 
@@ -426,7 +467,7 @@ const handleSubmit = async () => {
     // 检查是否已存在同名成员
     const isDuplicate = existingMembers.some(member => member.name === newMember.name)
     if (isDuplicate) {
-      alert('该成员已存在,请勿重复添加')
+      alert(t('duplicate'))
       isSubmitting.value = false
       return
     }

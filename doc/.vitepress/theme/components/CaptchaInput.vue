@@ -12,7 +12,7 @@
         type="button"
         @click="refreshCaptcha" 
         class="refresh-btn"
-        title="刷新验证码"
+        :title="isEn ? 'Refresh Captcha' : '刷新验证码'"
       >
         🔄
       </button>
@@ -29,7 +29,11 @@
 </template>
 
 <script setup>
-import { ref, onMounted, watch } from 'vue'
+import { ref, onMounted, watch, computed } from 'vue'
+import { useData } from 'vitepress'
+
+const { lang } = useData()
+const isEn = computed(() => lang.value.startsWith('en'))
 
 const props = defineProps({
   width: {
