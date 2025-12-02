@@ -149,6 +149,6 @@ duoyu-finance/
 
 ## 📄 许可证
 
-本项目基于 MIT 许可证开源。详情请参阅 [LICENSE](LICENSE) 文件。
+本项目基于 [MIT 许可证](https://opensource.org/licenses/MIT) 开源。
 
 GitHub 仓库: [https://github.com/Lappercn/duoyu.git](https://github.com/Lappercn/duoyu.git)
