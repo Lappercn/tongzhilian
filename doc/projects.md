@@ -6,6 +6,69 @@ outline: deep
 
 NexCore 团队在多个领域积累了丰富的实战经验，从企业级应用到 AI 算法落地，我们始终致力于交付高质量的解决方案。
 
+## 🏆 渝客淞创新大赛 - 获奖项目展示
+
+<div class="competition-showcase">
+  <div class="video-container">
+    <video controls poster="/projects/渝客淞/比赛记录/20251202-123435.jpg">
+      <source src="/projects/渝客淞/选举视频.mp4" type="video/mp4">
+      您的浏览器不支持视频播放。
+    </video>
+  </div>
+  <div class="competition-info">
+    <h3>多鱼理财 (DuoYu Finance)</h3>
+    <p class="team-members">
+      <strong>核心团队：</strong>
+      <span class="member">丁研渝 (产品)</span>
+      <span class="member">张学东 (开发演示)</span>
+      <span class="member">李万江 (开发)</span>
+    </p>
+    <p class="competition-desc">
+      在渝客淞创新大赛中，团队展示了基于 AI Agent 的智能投顾系统，凭借多视角博弈与实时数据驱动的创新交互，获得了评委的高度评价。
+    </p>
+  </div>
+</div>
+
+<style>
+.competition-showcase {
+  background: var(--vp-c-bg-soft);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 2rem 0;
+  border: 1px solid var(--vp-c-divider);
+}
+.video-container {
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  aspect-ratio: 16/9;
+  background: #000;
+}
+.video-container video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.team-members {
+  margin: 1rem 0;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.member {
+  background: var(--vp-c-brand-soft);
+  color: var(--vp-c-brand-1);
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+.competition-desc {
+  color: var(--vp-c-text-2);
+  line-height: 1.6;
+}
+</style>
+
 ## 💼 企业级应用
 
 ### 1. 全球化内容管理平台 (CMS)
