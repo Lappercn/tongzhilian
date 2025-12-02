@@ -6,7 +6,7 @@ outline: deep
 
 NexCore 团队在多个领域积累了丰富的实战经验，从企业级应用到 AI 算法落地，我们始终致力于交付高质量的解决方案。
 
-## 🏆 渝客淞创新大赛 - 获奖项目展示
+## 🏆 渝客淞创新大赛
 
 <div class="competition-showcase">
   <div class="video-container">
