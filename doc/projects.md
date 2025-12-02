@@ -19,7 +19,7 @@ NexCore 团队在多个领域积累了丰富的实战经验，从企业级应用
     <h3>多鱼理财 (DuoYu Finance)</h3>
     <p class="team-members">
       <strong>核心团队：</strong>
-      <span class="member">丁研渝 (产品)</span>
+      <span class="member">丁妍渝 (产品)</span>
       <span class="member">张学东 (开发演示)</span>
       <span class="member">李万江 (开发)</span>
     </p>
