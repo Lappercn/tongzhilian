@@ -47,7 +47,7 @@ features:
   <p style="text-align: center; color: var(--vp-c-text-2); margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto;">
     工作之余，我们也热爱生活。从雪山到海边，记录下每一个精彩瞬间。
   </p>
-  <TeamGallery :limit="4" :isHome="true" />
+  <TeamGallery :limit="6" :isHome="true" />
 </div>
 
 <div class="join-us-section">
