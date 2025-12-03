@@ -120,6 +120,7 @@ export default defineConfig({
           { text: '团队成员', link: '/team' },
           { text: '技术方向', link: '/api-examples' },
           { text: '项目案例', link: '/projects' },
+          { text: '读书笔记', link: '/reading/' },
           { text: '团队风采', link: '/moments' },
           { text: '加入我们', link: '/join-us' }
         ],
@@ -132,8 +133,31 @@ export default defineConfig({
                 { text: '团队成员', link: '/team' },
                 { text: '技术方向', link: '/api-examples' },
                 { text: '项目案例', link: '/projects' },
+                { text: '读书笔记', link: '/reading/' },
                 { text: '团队风采', link: '/moments' },
                 { text: '加入我们', link: '/join-us' }
+              ]
+            }
+          ],
+          '/reading/': [
+            {
+              text: '读书笔记',
+              items: [
+                { text: '概览', link: '/reading/' },
+                {
+                  text: '技术与工程',
+                  collapsed: false,
+                  items: [
+                    { text: '代码整洁之道', link: '/reading/tech/clean-code' }
+                  ]
+                },
+                {
+                  text: '管理与认知',
+                  collapsed: false,
+                  items: [
+                    { text: '人月神话', link: '/reading/management/mythical-man-month' }
+                  ]
+                }
               ]
             }
           ]
@@ -152,6 +176,7 @@ export default defineConfig({
           { text: 'Team', link: '/en/team' },
           { text: 'Tech Stack', link: '/en/api-examples' },
           { text: 'Projects', link: '/en/projects' },
+          { text: 'Reading', link: '/en/reading/' },
           { text: 'Moments', link: '/en/moments' },
           { text: 'Join Us', link: '/en/join-us' }
         ],
@@ -164,8 +189,31 @@ export default defineConfig({
                 { text: 'Team Members', link: '/en/team' },
                 { text: 'Tech Stack', link: '/en/api-examples' },
                 { text: 'Projects', link: '/en/projects' },
+                { text: 'Reading', link: '/en/reading/' },
                 { text: 'Moments', link: '/en/moments' },
                 { text: 'Join Us', link: '/en/join-us' }
+              ]
+            }
+          ],
+          '/en/reading/': [
+            {
+              text: 'Reading Notes',
+              items: [
+                { text: 'Overview', link: '/en/reading/' },
+                {
+                  text: 'Tech & Engineering',
+                  collapsed: false,
+                  items: [
+                    { text: 'Clean Code', link: '/en/reading/tech/clean-code' }
+                  ]
+                },
+                {
+                  text: 'Management & Cognition',
+                  collapsed: false,
+                  items: [
+                    { text: 'The Mythical Man-Month', link: '/en/reading/management/mythical-man-month' }
+                  ]
+                }
               ]
             }
           ]
