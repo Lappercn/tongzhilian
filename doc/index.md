@@ -43,12 +43,151 @@ features:
 </style>
 
 <div style="margin-top: 4rem;">
+  <h2 style="text-align: center; font-size: 2rem; font-weight: 800; margin-bottom: 1rem;">精选案例</h2>
+  <p style="text-align: center; color: var(--vp-c-text-2); margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+    我们用技术解决实际问题。以下是我们交付的一些代表性项目。
+  </p>
+  
+  <div class="project-grid">
+    <a href="/projects/duoyu" class="project-card">
+      <div class="project-image">
+        <img src="/projects/渝客淞/比赛记录/20251202-123435.jpg" alt="多鱼理财" />
+      </div>
+      <div class="project-content">
+        <h3>多鱼理财 - AI 智能投顾系统</h3>
+        <p>基于 AI Agent 的多角色博弈与实时行情分析系统，模拟顶级基金公司决策流程。</p>
+        <div class="project-tags">
+          <span>AI Agent</span>
+          <span>Vue3</span>
+          <span>Python</span>
+        </div>
+      </div>
+    </a>
+    <!-- 更多案例占位，后续可添加 -->
+  </div>
+  
+  <div style="text-align: center; margin-top: 2rem;">
+    <a href="/projects" class="vp-button medium brand">查看更多案例</a>
+  </div>
+</div>
+
+<div style="margin-top: 6rem;">
   <h2 style="text-align: center; font-size: 2rem; font-weight: 800; margin-bottom: 1rem;">团队风采</h2>
   <p style="text-align: center; color: var(--vp-c-text-2); margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto;">
     工作之余，我们也热爱生活。从雪山到海边，记录下每一个精彩瞬间。
   </p>
   <TeamGallery :limit="6" :isHome="true" />
 </div>
+
+<style scoped>
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1152px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.project-card {
+  display: block;
+  background: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  text-decoration: none !important;
+  color: inherit !important;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+  border-color: var(--vp-c-brand);
+}
+
+.project-image {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.project-card:hover .project-image img {
+  transform: scale(1.05);
+}
+
+.project-content {
+  padding: 1.5rem;
+}
+
+.project-content h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.project-content p {
+  margin: 0 0 1rem;
+  color: var(--vp-c-text-2);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.project-tags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.project-tags span {
+  font-size: 0.8rem;
+  padding: 0.2rem 0.6rem;
+  background: var(--vp-c-bg-alt);
+  border-radius: 4px;
+  color: var(--vp-c-text-2);
+}
+
+.vp-button {
+  display: inline-block;
+  border: 1px solid transparent;
+  text-align: center;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: color 0.25s, border-color 0.25s, background-color 0.25s;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.vp-button.medium {
+  border-radius: 20px;
+  padding: 0 20px;
+  line-height: 38px;
+  font-size: 14px;
+}
+
+.vp-button.brand {
+  border-color: var(--vp-button-brand-border);
+  color: var(--vp-button-brand-text);
+  background-color: var(--vp-button-brand-bg);
+}
+
+.vp-button.brand:hover {
+  border-color: var(--vp-button-brand-hover-border);
+  color: var(--vp-button-brand-hover-text);
+  background-color: var(--vp-button-brand-hover-bg);
+}
+</style>
 
 <div class="join-us-section">
   <div class="join-us-content">
