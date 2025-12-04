@@ -13,14 +13,11 @@ onMounted(async () => {
 
   console.log('[NexCore] Starting language detection...')
 
-  // 1. 检查本地存储 (Check localStorage)
-  // 如果用户之前已经访问过并被重定向，或者手动切换了语言（需配合语言切换按钮存储状态，这里先假设重定向会存）
-  const STORAGE_KEY = 'nexcore-lang-pref'
-  if (localStorage.getItem(STORAGE_KEY)) {
-    console.log('[NexCore] Language preference found in localStorage:', localStorage.getItem(STORAGE_KEY))
-    return
-  }
-
+  // 1. 移除本地存储检查 (Removed localStorage check)
+  // 每次访问根路径都强制进行 IP 检测，以实现"不缓存"的需求
+  // 这样即使用户之前访问过中文版，如果再次访问且 IP 是海外，也会被重定向到英文版
+  // const STORAGE_KEY = 'nexcore-lang-pref'
+  
   try {
     // 2. 尝试通过 IP 判断 (Try IP detection)
     // 由于这是静态站点运行在浏览器端，无法直接使用 maxmind 等服务端库读取本地数据库
@@ -64,12 +61,12 @@ onMounted(async () => {
       // 如果不是中国 (CN 或 CHINA)，则重定向到英文版
       if (upper !== 'CN' && upper !== 'CHINA') {
         console.log(`[NexCore] Detected country: ${countryResult}, redirecting to English...`)
-        localStorage.setItem(STORAGE_KEY, 'en')
+        // localStorage.setItem(STORAGE_KEY, 'en')
         window.location.href = '/en/'
         return
       } else {
         console.log('[NexCore] Detected China IP, staying on Chinese version.')
-        localStorage.setItem(STORAGE_KEY, 'zh')
+        // localStorage.setItem(STORAGE_KEY, 'zh')
       }
     }
   } catch (e) {
@@ -78,16 +75,16 @@ onMounted(async () => {
     const lang = navigator.language || navigator.userLanguage
     if (lang && !lang.startsWith('zh')) {
       console.log(`Fallback to browser lang: ${lang}, redirecting to English...`)
-      localStorage.setItem(STORAGE_KEY, 'en')
+      // localStorage.setItem(STORAGE_KEY, 'en')
       window.location.href = '/en/'
       return
     }
   }
   
   // 默认为中文，记录状态避免重复检查
-  if (!localStorage.getItem(STORAGE_KEY)) {
-    localStorage.setItem(STORAGE_KEY, 'zh')
-  }
+  // if (!localStorage.getItem(STORAGE_KEY)) {
+  //   localStorage.setItem(STORAGE_KEY, 'zh')
+  // }
 })
 </script>
 
