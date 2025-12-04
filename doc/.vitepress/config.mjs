@@ -152,6 +152,13 @@ export default defineConfig({
                   ]
                 },
                 {
+                  text: '销售与商业',
+                  collapsed: false,
+                  items: [
+                    { text: '解决方案销售实施手册', link: '/reading/sales/solution-selling' }
+                  ]
+                },
+                {
                   text: '管理与认知',
                   collapsed: false,
                   items: [
@@ -205,6 +212,13 @@ export default defineConfig({
                   collapsed: false,
                   items: [
                     { text: 'Clean Code', link: '/en/reading/tech/clean-code' }
+                  ]
+                },
+                {
+                  text: 'Sales & Business',
+                  collapsed: false,
+                  items: [
+                    { text: 'The Solution Selling Fieldbook', link: '/en/reading/sales/solution-selling' }
                   ]
                 },
                 {
