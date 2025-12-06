@@ -18,7 +18,7 @@ The system can not only retrieve real-time market data and news but also demonst
 
 ## 🌐 Online Demo
 
-👉 **Visit Online Demo**: [https://tongzhilian.cn/duoyu/](https://tongzhilian.cn/duoyu/)
+👉 **Visit Online Demo**: <a href="https://tongzhilian.cn/duoyu/" target="_blank">https://tongzhilian.cn/duoyu/</a>
 
 ---
 

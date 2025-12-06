@@ -18,7 +18,7 @@ outline: deep
 
 ## 🌐 在线体验
 
-👉 **立即访问在线演示**: [https://tongzhilian.cn/duoyu/](https://tongzhilian.cn/duoyu/)
+👉 **立即访问在线演示**: <a href="https://tongzhilian.cn/duoyu/" target="_blank">https://tongzhilian.cn/duoyu/</a>
 
 ---
 
